@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/WallUpArea2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/BallArea2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/WallDownArea2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/WallLeftArea2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/WallRightArea2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/PlayerLeftArea2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/PlayerRightArea2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/HUDCanvasLayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scritps/GameNode2D.gd" type="Script" id=9]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 10 )
+
+[node name="GameNode2D" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="BallArea2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 320, 240 )
+
+[node name="PlayerLeftArea2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 20, 240 )
+
+[node name="PlayerRightArea2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 620, 240 )
+collision_mask = 0
+
+[node name="WallUpArea2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 0 )
+
+[node name="WallDownArea2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, 480 )
+
+[node name="WallLeftArea2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 240 )
+
+[node name="WallRightArea2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 640, 240 )
+
+[node name="HUDCanvasLayer" parent="." instance=ExtResource( 8 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 503.0
+margin_top = 444.0
+margin_right = 610.0
+margin_bottom = 458.0
+custom_fonts/font = SubResource( 1 )
+text = "Made by Catalunha"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="PlayerRightArea2D" to="PlayerRightArea2D" method="_on_PlayerRightArea2D_area_entered"]
+[connection signal="goal_left" from="WallLeftArea2D" to="." method="_on_WallLeftArea2D_goal_left"]
+[connection signal="goal_right" from="WallRightArea2D" to="." method="_on_WallRightArea2D_goal_right"]
+[connection signal="playing" from="HUDCanvasLayer" to="." method="_on_HUDCanvasLayer_playing"]
