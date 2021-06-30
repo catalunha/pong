@@ -52,6 +52,7 @@ text = "Made by Catalunha"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="area_entered" from="PlayerRightArea2D" to="PlayerRightArea2D" method="_on_PlayerRightArea2D_area_entered"]
 [connection signal="goal_left" from="WallLeftArea2D" to="." method="_on_WallLeftArea2D_goal_left"]
 [connection signal="goal_right" from="WallRightArea2D" to="." method="_on_WallRightArea2D_goal_right"]
