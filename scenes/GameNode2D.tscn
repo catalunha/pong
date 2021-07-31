@@ -18,8 +18,9 @@ font_data = ExtResource( 10 )
 [node name="GameNode2D" type="Node2D"]
 script = ExtResource( 9 )
 
+[node name="HUDCanvasLayer" parent="." instance=ExtResource( 8 )]
+
 [node name="BallArea2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 320, 240 )
 
 [node name="PlayerLeftArea2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 20, 240 )
@@ -40,20 +41,18 @@ position = Vector2( 0, 240 )
 [node name="WallRightArea2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 640, 240 )
 
-[node name="HUDCanvasLayer" parent="." instance=ExtResource( 8 )]
-
 [node name="Label" type="Label" parent="."]
-margin_left = 503.0
-margin_top = 444.0
-margin_right = 610.0
-margin_bottom = 458.0
+margin_left = 523.045
+margin_top = 459.145
+margin_right = 630.045
+margin_bottom = 473.145
 custom_fonts/font = SubResource( 1 )
 text = "Made by Catalunha"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="playing" from="HUDCanvasLayer" to="." method="_on_HUDCanvasLayer_playing"]
 [connection signal="area_entered" from="PlayerRightArea2D" to="PlayerRightArea2D" method="_on_PlayerRightArea2D_area_entered"]
 [connection signal="goal_left" from="WallLeftArea2D" to="." method="_on_WallLeftArea2D_goal_left"]
 [connection signal="goal_right" from="WallRightArea2D" to="." method="_on_WallRightArea2D_goal_right"]
-[connection signal="playing" from="HUDCanvasLayer" to="." method="_on_HUDCanvasLayer_playing"]

@@ -12,6 +12,7 @@ func start_hud():
 	$ScoreRightLabel.text = "0"
 
 func update_score_left():
+	print('update_score_left')
 	score_left += 1
 	$ScoreLeftLabel.text = str(score_left)
 
@@ -32,8 +33,10 @@ func _on_Button_pressed():
 		playing = false
 		$Button.text = "Start"
 	else:
-		print("start")
+		print("Start")
 		playing = true
 		$Button.text = "Stop"
 	emit_signal("playing",playing)
 		
+func _ready():
+	start_hud()

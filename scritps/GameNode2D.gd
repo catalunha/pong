@@ -8,7 +8,6 @@ func _on_WallRightArea2D_goal_right():
 	$BallArea2D.new_game()
 	$HUDCanvasLayer.update_score_left()
 
-
 func _on_HUDCanvasLayer_playing(value):
 #	print("_on_HUDCanvasLayer_playing",value)
 	if value:
